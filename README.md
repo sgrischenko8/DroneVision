@@ -46,9 +46,7 @@ while logging every meaningful event to CSV with matching screenshots.
 | `logger.py` | Single CSV writer + screenshot capture used by every module. |
 | `cv_utils.py` | Small geometry helpers: bbox IoU, integer bbox conversion, frame-relative offset/scale computation. |
 | `drawing.py` | All `cv2` drawing helpers: tracked-object boxes, FIRE lock box, translucent banners. |
-| `display.py` | Aspect-ratio-safe window sizing and letterboxing (currently window sizing is disabled in `main.py` in favor of `WINDOW_AUTOSIZE`). |
 | `download_model.py` | Exports `yolov8n.pt` to OpenVINO IR format — run this once before `main.py` to prepare the models it expects. |
-| `qm.py` | One-off script to produce an INT8-quantized ONNX model via `onnxruntime.quantization`. |
 
 ## Design & module interactions
 

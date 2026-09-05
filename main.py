@@ -5,7 +5,7 @@ from queue import Queue, Empty, Full
 from ultralytics import YOLO
 import supervision as sv
 import numpy as np
-from config import WINDOW_NAME,VIDEO_SOURCE, FPS_WINDOW, COLOR_WARNING, TELEMETRY_LOW_BATTERY_THRESHOLD_PERCENT, CONNECTION_TIMEOUT
+from config import WINDOW_NAME,VIDEO_SOURCE, FPS_WINDOW, COLOR_WARNING, TELEMETRY_LOW_BATTERY_THRESHOLD_PERCENT, CONNECTION_TIMEOUT, CONF_THRESHOLD, MATCH_IOU_THRESHOLD
 from drawing import draw_banners
 from fire import FireController
 from logger import log_event
@@ -180,9 +180,9 @@ def main():
 
         # детекція запускається не на кожному кадрі, а раз в N (N залежить від power save)
         if frame_count == 1 or frame_count % active_detect_interval == 0:
-            results = current_model(frame, imgsz=current_imgsz, conf=0.4, iou=0.5, verbose=False, device="intel:cpu")
+            results = current_model(frame, imgsz=current_imgsz, conf=CONF_THRESHOLD, iou=MATCH_IOU_THRESHOLD, verbose=False, device="intel:cpu")[0]
 
-            detections = sv.Detections.from_ultralytics(results[0])
+            detections = sv.Detections.from_ultralytics(results)
             
             detections = tracker.update_with_detections(detections)
             if len(detections) > 0:

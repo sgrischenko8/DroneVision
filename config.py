@@ -1,11 +1,10 @@
 # --- джерело відео ---
 VIDEO_SOURCE = "test_video.mp4"
 # VIDEO_SOURCE = 0   # 0 = веб-камера, або шлях до файла ("test_video.mp4")
-OUTPUT_PATH = "output_annotated.mp4"
 WINDOW_NAME = "Data Fusion / Tracking"
 
 # --- детекція / трекінг ---
-DETECT_INTERVAL = 5
+DETECT_INTERVAL = 3
 TRAJ_SECONDS = 3.0           # скільки секунд зберігаємо траєкторію
 CONF_THRESHOLD = 0.4
 MATCH_DIST_PX = 80           # запасний варіант, якщо IoU нульовий - зіставляємо по відстані центрів
@@ -25,7 +24,6 @@ CSV_LOG_PATH = "detections_log.csv"
 SCREENSHOT_DIR = "screenshots"
 
 # --- кольори рамок (BGR) ---
-COLOR_TENTATIVE = (0, 255, 255)
 COLOR_CONFIRMED = (0, 140, 255)
 COLOR_LOST = (0, 0, 255)
 COLOR_PAD = (255, 200, 0)
@@ -34,7 +32,7 @@ COLOR_CRITICAL = (0, 0, 255)
 COLOR_LOCK = (0, 0, 255)
 
 # --- захват цілі (клавіша F) ---
-FIRE_LOCK_LOST_GRACE_SEC = 1.0  # скільки секунд ціль може бути тимчасово втрачена, перш ніж рахуємо TARGET_LOST
+FIRE_LOCK_LOST_GRACE_SEC = 3.0  # скільки секунд ціль може бути тимчасово втрачена, перш ніж рахуємо TARGET_LOST
 
 # --- посадка на маркер (клавіша P) ---
 ARUCO_DICT = "DICT_4X4_50"
