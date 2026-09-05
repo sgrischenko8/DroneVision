@@ -93,7 +93,9 @@ All tunables live in `config.py`, grouped by subsystem:
 - Thermal thresholds (`TEMP_WARNING_MIN_C`, `TEMP_CRITICAL_C`) and the WARNING pause
   duration.
 
-## Requirements
+## Usage
+
+### Requirements:
 
 - Python 3.9+
 - `opencv-python`
@@ -103,13 +105,13 @@ All tunables live in `config.py`, grouped by subsystem:
 - `openvino`
 - A webcam, or a video file path set in `config.VIDEO_SOURCE`
 
-Install (example):
+Clone the repository, open the project folder in your terminal, and run the following command to install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Preparing the models
+### Preparing the models
 
 `main.py` expects OpenVINO IR models at `yolov8n_320_openvino_model` and
 `yolov8n_480_openvino_model`. Before running `main.py`, run:
@@ -118,10 +120,9 @@ pip install -r requirements.txt
 python download_model.py
 ```
 
-## Running
+### Running
 
 ```bash
-python download_model.py
 python main.py
 ```
 
@@ -134,4 +135,3 @@ are appended to `detections_log.csv`, with screenshots saved under `screenshots/
 - There is no physical drone: `telemetry.py` simulates the async telemetry channel. Swapping
   in real hardware only requires replacing `telemetry.py`'s internals — the event names and
   shapes (`LOW_BATTERY`, `BATTERY_LEVEL`, `CHIP_TEMP`) are meant to stay the same.
-- `qm.py` is a standalone utility/reference script and is not wired into the main pipeline.
